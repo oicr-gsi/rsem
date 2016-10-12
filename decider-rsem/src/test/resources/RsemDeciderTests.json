@@ -12,7 +12,6 @@
             "id": "General sample test 1",
             "parameters": {
                 "--root-sample-name": "TGL_0005",
-                "--index-dir": "/.mount/labs/PDE/data/reference/Star100b",
                 "--rsem-strandedness": "reverse"
             }
         }       

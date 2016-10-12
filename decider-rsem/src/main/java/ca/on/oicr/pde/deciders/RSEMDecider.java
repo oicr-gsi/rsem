@@ -43,7 +43,7 @@ public class RSEMDecider extends OicrDecider {
         parser.accepts("rsem-threads", "Optional: RSEM threads, default is 6.").withRequiredArg();
         parser.accepts("rsem-mem-mb", "Optional: RSEM allocated memory Mb, default is 10000.").withRequiredArg();
         parser.accepts("ngsutils-mem-mb", "Optional: ngsutils allocated memory Mb, default is 8000.").withRequiredArg();
-        parser.accepts("additionalRsemParams", "Optional: Star additional parameters").withRequiredArg();
+        parser.accepts("additionalRsemParams", "Optional: RSEM additional parameters").withRequiredArg();
         parser.accepts("template-type", "Optional: limit the run to only specified template type").withRequiredArg();
 
     }
