@@ -167,7 +167,7 @@ public class RSEMWorkflow extends SemanticWorkflow {
                 if (hasPropertyAndNotNull("rsem_strandedness") && !getProperty("rsem_strandedness").isEmpty()) {
                    String rsem_strand = getProperty("rsem_strandedness").toLowerCase();
                    if (!rsem_strand.equals("none")) {
-                       a.append(" ");
+                       a.append(" --strandedness ");
                        a.append(rsem_strand);
                    }
                 }
