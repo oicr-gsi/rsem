@@ -13,7 +13,6 @@ import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 
 public class RSEMWorkflow extends SemanticWorkflow {
 
-    String input_path = null;
     String rsem_index_dir = null;
     String dataDir = null;
     String outputFileName = null;
@@ -67,7 +66,6 @@ public class RSEMWorkflow extends SemanticWorkflow {
             if (!RSEMDIR.endsWith("/")) {RSEMDIR+="/";}
             
             bamutils   = getProperty("bamutils");
-            input_path = getProperty("input_file");
             rsem_index_dir = getProperty("index_dir"); //index dir also need to include the prefix used to build index files
             manualOutput = Boolean.valueOf(getOptionalProperty("manual_output", "false"));
             numOfThreads = Integer.valueOf(getOptionalProperty("rsem_threads", DEFAULT_THREADS));
@@ -87,12 +85,7 @@ public class RSEMWorkflow extends SemanticWorkflow {
             System.exit(1);
         }
 
-        //registers input and output files
-        inputFile  = this.createFile("input_file");
-        inputFile.setSourcePath(input_path);
-        inputFile.setType(BAM);
-        inputFile.setIsInput(true);
-        
+       
         outputTranscripts = createOutputFile(this.dataDir + outputFileName + "." + RSEM_TRANSCRIPTS, BAM, manualOutput);
         outputGenes       = createOutputFile(this.dataDir + outputFileName + "." + RSEM_GENES, TXT, manualOutput);
         outputIsoforms    = createOutputFile(this.dataDir + outputFileName + "." + RSEM_ISO, TXT, manualOutput);
@@ -105,6 +98,9 @@ public class RSEMWorkflow extends SemanticWorkflow {
         dataDir = getOptionalProperty("data_dir","data");
         if (!dataDir.endsWith("/")) {dataDir+="/";}
         this.addDirectory(dataDir);
+        
+        inputFile = this.provisionInputFiles("input_file")[0];
+        inputFile.setType(BAM);
     }
 
     @Override
