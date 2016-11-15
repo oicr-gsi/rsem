@@ -21,6 +21,7 @@ public class RSEMDecider extends OicrDecider {
     private String numOfThreads  = "6";
     private String bamutilMemory = "8000";
     private String rsemMemory    = "10000";
+    private String rsemStrandedness = "none"; // For all TrueSeq stranded - derived protocols should be set to reverse
     private String queue = "";
     
     private final static String DEFAULT_THREADS = "6";
@@ -42,6 +43,7 @@ public class RSEMDecider extends OicrDecider {
         //RSEM
         parser.accepts("rsem-threads", "Optional: RSEM threads, default is 6.").withRequiredArg();
         parser.accepts("rsem-mem-mb", "Optional: RSEM allocated memory Mb, default is 10000.").withRequiredArg();
+        parser.accepts("rsem-strandedness", "Optional: RSEM strandedness, default is none.").withRequiredArg();
         parser.accepts("ngsutils-mem-mb", "Optional: ngsutils allocated memory Mb, default is 8000.").withRequiredArg();
         parser.accepts("additionalRsemParams", "Optional: RSEM additional parameters").withRequiredArg();
         parser.accepts("template-type", "Optional: limit the run to only specified template type").withRequiredArg();
@@ -93,6 +95,10 @@ public class RSEMDecider extends OicrDecider {
         
         if (this.options.has("rsem-mem-mb")) {
             this.rsemMemory = options.valueOf("rsem-mem-mb").toString();
+        }
+        
+        if (this.options.has("rsem-strandedness")) {
+            this.rsemStrandedness = options.valueOf("rsem-strandedness").toString();
         }
         
         if (this.options.has("ngsutils-mem-mb")) {
@@ -174,10 +180,6 @@ public class RSEMDecider extends OicrDecider {
     @Override
     protected ReturnValue doFinalCheck(String commaSeparatedFilePaths, String commaSeparatedParentAccessions) {
         String[] filePaths = commaSeparatedFilePaths.split(",");
-        if (filePaths.length != 2) {  // main bam and aligned to Transcriptome bam
-            Log.error("This Decider supports only cases where we have only 2 files per lane, WON'T RUN");
-            return new ReturnValue(ReturnValue.INVALIDPARAMETERS);
-        }
         boolean haveTranscriptBam = false;
 
         for (String p : filePaths) {
@@ -228,12 +230,7 @@ public class RSEMDecider extends OicrDecider {
         if (!this.options.has("test")) {
             this.setTest(false);
         }
-        String[] filePaths = commaSeparatedFilePaths.split(",");
-        if (filePaths.length != 2) {
-            Log.error("We accept only cases where we have an additional (Transcriptome aligned) file per run");
-            System.exit(1);
-        }
-        
+        String[] filePaths = commaSeparatedFilePaths.split(",");       
         BeSmall currentBs = null;
         for (String p : filePaths) {
             for (BeSmall bs : fileSwaToSmall.values()) {
@@ -258,9 +255,10 @@ public class RSEMDecider extends OicrDecider {
         iniFileMap.put("manual_output", this.manual_output);
         iniFileMap.put("additionalRSEMParams", this.additionalRsemParams);
 
-        iniFileMap.put("rsem_threads",    this.numOfThreads);
-        iniFileMap.put("rsem_mem_mb",     this.rsemMemory);
-        iniFileMap.put("ngsutils_mem_mb", this.bamutilMemory);
+        iniFileMap.put("rsem_threads",     this.numOfThreads);
+        iniFileMap.put("rsem_mem_mb",      this.rsemMemory);
+        iniFileMap.put("rsem_strandedness",this.rsemStrandedness);
+        iniFileMap.put("ngsutils_mem_mb",  this.bamutilMemory);
 
         iniFileMap.put("ius_accession", currentBs.getIus_accession());
         iniFileMap.put("sequencer_run_name", currentBs.getSequencer_run_name());

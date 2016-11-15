@@ -49,7 +49,7 @@ public class RSEMWorkflow extends SemanticWorkflow {
         
     /**
      * Function that returns CV terms put into a Map container
-     * @return myTerms
+     * @return myTerms (Set of terms)
      */
     @Override
     protected Map<String, Set<String>> getTerms() {
