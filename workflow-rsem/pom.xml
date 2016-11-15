@@ -14,7 +14,7 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>workflow_RSEM</name>
+    <name>${display-name}</name>
 
     <properties>
         <workflow-name>RSEM</workflow-name>

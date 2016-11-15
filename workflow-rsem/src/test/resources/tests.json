@@ -7,9 +7,12 @@
         "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/RSEM/workflow/output_expectation/${project.version}/"
     },
     "tests": [
-        {
-	    "description": "Runs the default workflow.ini",
-            "input_config": "workflow.ini"
+         {
+            "id": "RSEM_defaults",
+            "parameters": {
+                "barcode": "TEST",
+                "rsem_strandedness" : "reverse"
+            }
         }
     ]
 }
