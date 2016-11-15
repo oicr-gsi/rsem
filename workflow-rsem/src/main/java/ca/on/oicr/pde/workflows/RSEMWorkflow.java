@@ -115,7 +115,7 @@ public class RSEMWorkflow extends SemanticWorkflow {
         String unclipped_path = this.dataDir + this.outputFileName + ".noclip.bam";
         
         job01.setCommand(bamutils + " removeclipping ");
-        job01.getCommand().addArgument(this.inputFile.getSourcePath());
+        job01.getCommand().addArgument(inputFile.getProvisionedPath());
         job01.getCommand().addArgument(unclipped_path);
         job01.setMaxMemory(getProperty("ngsutils_mem_mb"));
         job01.setQueue(queue);
