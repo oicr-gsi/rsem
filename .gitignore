@@ -6,7 +6,8 @@ target
 .settings
 .properties
 *.DS_Store
-nbactions.xml
+decider-rsem/nbactions.xml
+workflow-rsem/nbactions.xml
 nb-configuration.xml
 
 # Mobile Tools for Java (J2ME)
