@@ -109,8 +109,7 @@ public class RSEMWorkflow extends SemanticWorkflow {
         // Step 1.  To run RSEMDIR on Transcriptome-aligned reads we need to remove soft-clipped bases
         Job job01 = this.getWorkflow().createBashJob("rm_softclip_bases");
         String unclipped_path = this.dataDir + this.outputFileName + ".noclip.bam";
-        String ngsutilsBaseDir = bamutils.substring(0, bamutils.indexOf("bin/bamutils"));
-        job01.setCommand("export $PYTHONHOME=" + getProperty("ngsutils_pythonhome") + ";"
+        job01.setCommand("export PYTHONHOME=" + getProperty("ngsutils_pythonhome") + ";"
                        + bamutils 
                        + " removeclipping ");
         job01.getCommand().addArgument(inputFile.getProvisionedPath());
