@@ -1,4 +1,14 @@
 *.class
+target
+*~
+.project
+.classpath
+.settings
+.properties
+*.DS_Store
+decider-rsem/nbactions.xml
+workflow-rsem/nbactions.xml
+nb-configuration.xml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -10,3 +20,6 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/workflow-rsem/target/
+/decider-rsem/target/
+

@@ -1,0 +1,456 @@
+{
+  "workflowRunCount" : 2,
+  "studies" : [ "TGL" ],
+  "sequencerRuns" : [ "160721_NB551051_0005_AH757GBGXY", "160722_NB551051_0006_AH7HMNBGXY" ],
+  "lanes" : [ "160721_NB551051_0005_AH757GBGXY_lane_1", "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+  "samples" : [ "TGL_0004_Ly_C_PE_304_WT", "TGL_0004_Ly_C_PE_305_WT" ],
+  "workflows" : [ "FusionDetection-Tophat", "RNAseqAligner-Tophat", "STAR" ],
+  "processingAlgorithms" : [ "ProvisionFiles" ],
+  "fileMetaTypes" : [ "application/bam" ],
+  "maxInputFiles" : 6,
+  "minInputFiles" : 6,
+  "totalInputFiles" : 12,
+  "workflowRuns" : [ {
+    "workflowIni" : {
+      "additionalRSEMParams" : "",
+      "bamutils" : "${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/ngsutils-0.5.9/bin/bamutils",
+      "barcode" : "ACAGTGAT",
+      "bundled_jre" : "${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/jre1.7.0_51/bin/java",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "data_dir" : "data",
+      "index_dir" : "/.mounts/labs/PDE/data/reference/hg19_random/RSEM/RSEM",
+      "ius_accession" : "4823282",
+      "lane" : "1",
+      "library" : "TGL_0004_Ly_C_PE_304_WT",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "ngsutils_mem_mb" : "8000",
+      "ngsutils_pythonpath" : "/.mounts/labs/PDE/Modules/sw/python/Python-2.7.12/lib/python2.7/site-packages/:${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/ngsutils-0.5.9/venv/lib/python2.7/site-packages/",
+      "output_dir" : "seqware-results",
+      "queue" : "",
+      "rsem_dir" : "${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/RSEM-1.3.0/",
+      "rsem_mem_mb" : "10000",
+      "rsem_strandedness" : "reverse",
+      "rsem_threads" : "6",
+      "sequencer_run_name" : "160721_NB551051_0005_AH757GBGXY"
+    },
+    "files" : [ {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*75}{..}{R*75}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_304_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2438_1_1", "2438_2_1", "2438_3_1", "2438_4_1", "2438_5_1" ] ],
+        "sample.geo_template_id" : [ [ "107682" ] ],
+        "sample.geo_template_type" : [ [ "Illumina_totalRNA_Library_Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160721_NB551051_0005_AH757GBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2438" ] ]
+      },
+      "laneName" : [ "160721_NB551051_0005_AH757GBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ACAGTGAT" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "FusionDetection-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : 1550201298
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*75}{..}{R*75}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_304_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2438_1_1", "2438_2_1", "2438_3_1", "2438_4_1", "2438_5_1" ] ],
+        "sample.geo_template_id" : [ [ "107682" ] ],
+        "sample.geo_template_type" : [ [ "Illumina_totalRNA_Library_Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160721_NB551051_0005_AH757GBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2438" ] ]
+      },
+      "laneName" : [ "160721_NB551051_0005_AH757GBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ACAGTGAT" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "FusionDetection-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : 271115538
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*75}{..}{R*75}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_304_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2438_1_1", "2438_2_1", "2438_3_1", "2438_4_1", "2438_5_1" ] ],
+        "sample.geo_template_id" : [ [ "107682" ] ],
+        "sample.geo_template_type" : [ [ "Illumina_totalRNA_Library_Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160721_NB551051_0005_AH757GBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2438" ] ]
+      },
+      "laneName" : [ "160721_NB551051_0005_AH757GBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ACAGTGAT" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "RNAseqAligner-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : -120139168
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*75}{..}{R*75}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_304_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2438_1_1", "2438_2_1", "2438_3_1", "2438_4_1", "2438_5_1" ] ],
+        "sample.geo_template_id" : [ [ "107682" ] ],
+        "sample.geo_template_type" : [ [ "Illumina_totalRNA_Library_Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160721_NB551051_0005_AH757GBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2438" ] ]
+      },
+      "laneName" : [ "160721_NB551051_0005_AH757GBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ACAGTGAT" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "RNAseqAligner-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : -914463420
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*75}{..}{R*75}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_304_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2438_1_1", "2438_2_1", "2438_3_1", "2438_4_1", "2438_5_1" ] ],
+        "sample.geo_template_id" : [ [ "107682" ] ],
+        "sample.geo_template_type" : [ [ "Illumina_totalRNA_Library_Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160721_NB551051_0005_AH757GBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2438" ] ]
+      },
+      "laneName" : [ "160721_NB551051_0005_AH757GBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ACAGTGAT" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "STAR" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : {
+        "file.cvterms" : [ [ "EDAM:format_2572,EDAM:format_1921,EDAM:topic_0182" ] ]
+      },
+      "fileId" : -882470693
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*75}{..}{R*75}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_304_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2438_1_1", "2438_2_1", "2438_3_1", "2438_4_1", "2438_5_1" ] ],
+        "sample.geo_template_id" : [ [ "107682" ] ],
+        "sample.geo_template_type" : [ [ "Illumina_totalRNA_Library_Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160721_NB551051_0005_AH757GBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2438" ] ]
+      },
+      "laneName" : [ "160721_NB551051_0005_AH757GBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ACAGTGAT" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "STAR" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : {
+        "file.cvterms" : [ [ "EDAM:format_2572,EDAM:format_1921,EDAM:topic_0182" ] ]
+      },
+      "fileId" : 678072934
+    } ]
+  }, {
+    "workflowIni" : {
+      "additionalRSEMParams" : "",
+      "bamutils" : "${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/ngsutils-0.5.9/bin/bamutils",
+      "barcode" : "ATTACTCG",
+      "bundled_jre" : "${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/jre1.7.0_51/bin/java",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "data_dir" : "data",
+      "index_dir" : "/.mounts/labs/PDE/data/reference/hg19_random/RSEM/RSEM",
+      "ius_accession" : "4852256",
+      "lane" : "1",
+      "library" : "TGL_0004_Ly_C_PE_305_WT",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "ngsutils_mem_mb" : "8000",
+      "ngsutils_pythonpath" : "/.mounts/labs/PDE/Modules/sw/python/Python-2.7.12/lib/python2.7/site-packages/:${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/ngsutils-0.5.9/venv/lib/python2.7/site-packages/",
+      "output_dir" : "seqware-results",
+      "queue" : "",
+      "rsem_dir" : "${workflow_bundle_dir}/Workflow_Bundle_RSEM/1.0/bin/RSEM-1.3.0/",
+      "rsem_mem_mb" : "10000",
+      "rsem_strandedness" : "reverse",
+      "rsem_threads" : "6",
+      "sequencer_run_name" : "160722_NB551051_0006_AH7HMNBGXY"
+    },
+    "files" : [ {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*150}{..}{R*150}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_305_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2439_1_1", "2439_2_1", "2439_3_1", "2439_4_1", "2443_1,1_1" ] ],
+        "sample.geo_template_id" : [ [ "107683" ] ],
+        "sample.geo_template_type" : [ [ "Illumina WT Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160722_NB551051_0006_AH7HMNBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2439" ] ]
+      },
+      "laneName" : [ "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ATTACTCG" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "FusionDetection-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : 1970759024
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*150}{..}{R*150}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_305_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2439_1_1", "2439_2_1", "2439_3_1", "2439_4_1", "2443_1,1_1" ] ],
+        "sample.geo_template_id" : [ [ "107683" ] ],
+        "sample.geo_template_type" : [ [ "Illumina WT Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160722_NB551051_0006_AH7HMNBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2439" ] ]
+      },
+      "laneName" : [ "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ATTACTCG" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "FusionDetection-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : 613366836
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*150}{..}{R*150}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_305_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2439_1_1", "2439_2_1", "2439_3_1", "2439_4_1", "2443_1,1_1" ] ],
+        "sample.geo_template_id" : [ [ "107683" ] ],
+        "sample.geo_template_type" : [ [ "Illumina WT Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160722_NB551051_0006_AH7HMNBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2439" ] ]
+      },
+      "laneName" : [ "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ATTACTCG" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "RNAseqAligner-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : -516459638
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*150}{..}{R*150}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_305_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2439_1_1", "2439_2_1", "2439_3_1", "2439_4_1", "2443_1,1_1" ] ],
+        "sample.geo_template_id" : [ [ "107683" ] ],
+        "sample.geo_template_type" : [ [ "Illumina WT Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160722_NB551051_0006_AH7HMNBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2439" ] ]
+      },
+      "laneName" : [ "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ATTACTCG" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "RNAseqAligner-Tophat" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : { },
+      "fileId" : -636260262
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*150}{..}{R*150}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_305_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2439_1_1", "2439_2_1", "2439_3_1", "2439_4_1", "2443_1,1_1" ] ],
+        "sample.geo_template_id" : [ [ "107683" ] ],
+        "sample.geo_template_type" : [ [ "Illumina WT Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160722_NB551051_0006_AH7HMNBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2439" ] ]
+      },
+      "laneName" : [ "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ATTACTCG" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "STAR" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : {
+        "file.cvterms" : [ [ "EDAM:format_2572,EDAM:format_1921,EDAM:topic_0182" ] ]
+      },
+      "fileId" : -1613068290
+    }, {
+      "studyTitle" : [ "TGL" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "225" ] ]
+      },
+      "experimentName" : [ "Geo_TGL_ILLUMINA_WT_{F*150}{..}{R*150}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "TGL_0004_Ly_C_PE_305_WT" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WT" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "2439_1_1", "2439_2_1", "2439_3_1", "2439_4_1", "2443_1,1_1" ] ],
+        "sample.geo_template_id" : [ [ "107683" ] ],
+        "sample.geo_template_type" : [ [ "Illumina WT Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "Ly" ] ],
+        "sample.geo_tissue_type" : [ [ "C" ] ]
+      },
+      "sequencerRunName" : [ "160722_NB551051_0006_AH7HMNBGXY" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "2439" ] ]
+      },
+      "laneName" : [ "160722_NB551051_0006_AH7HMNBGXY_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "ATTACTCG" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "STAR" ],
+      "processingAlgorithm" : [ "ProvisionFiles" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "application/bam" ],
+      "fileAttributes" : {
+        "file.cvterms" : [ [ "EDAM:format_2572,EDAM:format_1921,EDAM:topic_0182" ] ]
+      },
+      "fileId" : 649035891
+    } ]
+  } ]
+}

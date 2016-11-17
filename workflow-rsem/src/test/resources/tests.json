@@ -1,0 +1,18 @@
+{
+    "defaults": {
+        "description": "RSEM workflow test",
+	"metrics_calculate": "calculate.sh",
+        "metrics_compare": "compare.sh",
+        "input_config_dir": "/.mounts/labs/PDE/data/RegressionTests/RSEM/workflow/input_config/${project.version}/",
+        "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/RSEM/workflow/output_expectation/${project.version}/"
+    },
+    "tests": [
+         {
+            "id": "RSEM_defaults",
+            "parameters": {
+                "barcode": "TEST",
+                "rsem_strandedness" : "reverse"
+            }
+        }
+    ]
+}

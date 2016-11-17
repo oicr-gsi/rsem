@@ -1,0 +1,21 @@
+{
+    "defaultDescription": "RsemDecider test",
+    "defaultMetricsResources": "/expected_output/development/",
+    "defaultParameters": {
+        "--before-date": "2016-11-15"
+    },
+    "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
+        "unique_string", "parent_accessions", "parent_accession", "input_file",
+        "input_files", "workflow_bundle_dir", "output_prefix"],
+    "tests": [
+        {
+            "id": "General sample test 1",
+            "parameters": {
+                "--root-sample-name": "TGL_0004",
+                "--template-type" : "WT",
+                "--rsem-strandedness": "reverse"
+            }
+        }    
+        
+    ]
+}
