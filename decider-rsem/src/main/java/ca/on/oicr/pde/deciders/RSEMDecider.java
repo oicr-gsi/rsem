@@ -14,6 +14,7 @@ public class RSEMDecider extends OicrDecider {
     private Map<String, BeSmall> fileSwaToSmall;
     
     private String index_dir;
+    private String ngsutilsPythonPath = "";
     private String output_prefix = "./";
     private String output_dir = "seqware-results";
     private String manual_output = "false";
@@ -45,6 +46,7 @@ public class RSEMDecider extends OicrDecider {
         parser.accepts("rsem-mem-mb", "Optional: RSEM allocated memory Mb, default is 10000.").withRequiredArg();
         parser.accepts("rsem-strandedness", "Optional: RSEM strandedness, default is none.").withRequiredArg();
         parser.accepts("ngsutils-mem-mb", "Optional: ngsutils allocated memory Mb, default is 8000.").withRequiredArg();
+        parser.accepts("ngsutils-pythonpath", "Optional: ngsutils needs correct PYTHONPATH set, normally user shouldn't change this.").withRequiredArg();
         parser.accepts("additionalRsemParams", "Optional: RSEM additional parameters").withRequiredArg();
         parser.accepts("template-type", "Optional: limit the run to only specified template type").withRequiredArg();
 
@@ -103,6 +105,10 @@ public class RSEMDecider extends OicrDecider {
         
         if (this.options.has("ngsutils-mem-mb")) {
             this.bamutilMemory = options.valueOf("ngsutils-mem-mb").toString();
+        }
+        
+        if (this.options.has("ngsutils-pythonpath")) {
+            this.ngsutilsPythonPath = options.valueOf("ngsutils-pythonpath").toString();
         }
         
         if (this.options.has("additional-rsem-params")) {
@@ -270,6 +276,10 @@ public class RSEMDecider extends OicrDecider {
             iniFileMap.put("queue", this.queue);
         } else {
             iniFileMap.put("queue", " ");
+        }
+        //PYTHONPATH is configured in the dafault ini and should not be normally changed
+        if (!this.ngsutilsPythonPath.isEmpty()) {
+            iniFileMap.put("ngsutils_pythonpath", this.ngsutilsPythonPath);
         }
         return iniFileMap;
     }
