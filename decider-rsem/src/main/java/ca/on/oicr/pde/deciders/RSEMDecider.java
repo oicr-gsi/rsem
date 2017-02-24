@@ -15,15 +15,11 @@ public class RSEMDecider extends OicrDecider {
     
     private String index_dir;
     private String ngsutilsPythonPath = "";
-    private String output_prefix = "./";
-    private String output_dir = "seqware-results";
-    private String manual_output = "false";
     private String additionalRsemParams = "";
     private String numOfThreads  = "6";
     private String bamutilMemory = "8000";
     private String rsemMemory    = "10000";
     private String rsemStrandedness = "none"; // For all TrueSeq stranded - derived protocols should be set to reverse
-    private String queue = "";
     
     private final static String DEFAULT_THREADS = "6";
     private final static String BAM_METATYPE = "application/bam";
@@ -35,11 +31,6 @@ public class RSEMDecider extends OicrDecider {
         fileSwaToSmall = new HashMap<String, BeSmall>();
         parser.accepts("ini-file", "Optional: the location of the INI file.").withRequiredArg();
         parser.accepts("index-dir", "reference index dir").withRequiredArg();
-        parser.accepts("verbose", "Optional: output all SeqWare info.").withRequiredArg();
-        parser.accepts("output-prefix", "Optional: the path where the files should be copied to after analysis. output-prefix in INI file.").withRequiredArg();
-        parser.accepts("output-dir", "Optional: the folder to put the output into relative to the output-path. Corresponds to output-dir in INI file.").withRequiredArg();
-        parser.accepts("manual-output", "Optional*. Set the manual output either to true or false").withRequiredArg();
-        parser.accepts("queue", "Queue on SGE cluster.").withRequiredArg();
         
         //RSEM
         parser.accepts("rsem-threads", "Optional: RSEM threads, default is 6.").withRequiredArg();
@@ -56,7 +47,7 @@ public class RSEMDecider extends OicrDecider {
     public ReturnValue init() {
         Log.debug("INIT");
         this.setMetaType(Arrays.asList("application/bam"));
-        this.setGroupingStrategy(FindAllTheFiles.Header.FILE_SWA);
+        this.setHeadersToGroupBy(Arrays.asList(FindAllTheFiles.Header.FILE_SWA));
 
         //allows anything defined on the command line to override the defaults here.
         if (this.options.has("index-dir")){
@@ -64,30 +55,7 @@ public class RSEMDecider extends OicrDecider {
         } else {
             this.index_dir = DEFAULT_INDEXDIR;
         }
-        
-        if (this.options.has("output-path")) {
-            output_prefix = options.valueOf("output-path").toString();
-            if (!output_prefix.endsWith("/")) {
-                output_prefix += "/";
-            }
-        }
-        
-        if (this.options.has("output-dir")) {
-            output_dir = options.valueOf("output-dir").toString();
-        }
 
-        if (this.options.has("verbose")) {
-            Log.setVerbose(true);
-        }
-
-        if (this.options.has("manual-output")) {
-            this.manual_output = options.valueOf("manual-output").toString();
-        }
-              
-        if (this.options.has("queue")) {
-            this.queue = options.valueOf("queue").toString();
-        }
-        
         //RSEM
         if (this.options.has("rsem-threads")) {
             this.numOfThreads = options.valueOf("rsem-threads").toString();
@@ -118,6 +86,15 @@ public class RSEMDecider extends OicrDecider {
         ReturnValue val = super.init();
 
         return val;
+    }
+
+    @Override
+    protected boolean checkFileDetails(FileAttributes fa) {
+        if (fa.getPath().contains(TRANSCRIPTOME_SUFFIX)) {
+            return super.checkFileDetails(fa);
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -232,10 +209,6 @@ public class RSEMDecider extends OicrDecider {
     protected Map<String, String> modifyIniFile(String commaSeparatedFilePaths, String commaSeparatedParentAccessions) {
         Log.debug("INI FILE:" + commaSeparatedFilePaths);
 
-        //reset test mode
-        if (!this.options.has("test")) {
-            this.setTest(false);
-        }
         String[] filePaths = commaSeparatedFilePaths.split(",");       
         BeSmall currentBs = null;
         for (String p : filePaths) {
@@ -250,15 +223,12 @@ public class RSEMDecider extends OicrDecider {
         // Refuse to continue if we don't have an object with metadta for one of the files
         if (null == currentBs) {
             Log.error("Was not able to retrieve fastq files for either one or two subsets of paired reads, setting mode to test");
-            this.setTest(true);
+            abortSchedulingOfCurrentWorkflowRun();
         }
         
         Map<String, String> iniFileMap = new TreeMap<String, String>();
         iniFileMap.put("input_file", currentBs.getPath());
         iniFileMap.put("index_dir", this.index_dir);
-        iniFileMap.put("output_prefix", this.output_prefix);
-        iniFileMap.put("output_dir", this.output_dir);
-        iniFileMap.put("manual_output", this.manual_output);
         iniFileMap.put("additionalRSEMParams", this.additionalRsemParams);
 
         iniFileMap.put("rsem_threads",     this.numOfThreads);
@@ -272,11 +242,6 @@ public class RSEMDecider extends OicrDecider {
         iniFileMap.put("barcode", currentBs.getBarcode());
         iniFileMap.put("library", currentBs.getRGLB());
 
-        if (!this.queue.isEmpty()) {
-            iniFileMap.put("queue", this.queue);
-        } else {
-            iniFileMap.put("queue", " ");
-        }
         //PYTHONPATH is configured in the dafault ini and should not be normally changed
         if (!this.ngsutilsPythonPath.isEmpty()) {
             iniFileMap.put("ngsutils_pythonpath", this.ngsutilsPythonPath);
