@@ -226,7 +226,7 @@ public class RSEMDecider extends OicrDecider {
             abortSchedulingOfCurrentWorkflowRun();
         }
         
-        Map<String, String> iniFileMap = new TreeMap<String, String>();
+        Map<String, String> iniFileMap = super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
         iniFileMap.put("input_file", currentBs.getPath());
         iniFileMap.put("index_dir", this.index_dir);
         iniFileMap.put("additionalRSEMParams", this.additionalRsemParams);
