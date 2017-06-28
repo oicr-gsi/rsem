@@ -23,7 +23,8 @@
                 "--all": "",
                 "--include-study": "TGL",
                 "--rsem-strandedness": "reverse"
-            } , {
+            }
+        } , {
             "id": "Study test No BAM",
             "parameters": {
                 "--all": "",
