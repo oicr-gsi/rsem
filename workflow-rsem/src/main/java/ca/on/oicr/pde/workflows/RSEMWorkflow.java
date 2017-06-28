@@ -35,7 +35,8 @@ public class RSEMWorkflow extends SemanticWorkflow {
     private final static String RSEM_TRANSCRIPTS = "transcript.bam";
     private final static String BAM = "application/bam";
     private final static String TXT = "text/plain";
-
+    private boolean provisionBamFile = true;
+    
     //Ontology-related variables
     private static final String EDAM = "EDAM";
     private static final Map<String, Set<String>> cvTerms;
@@ -45,6 +46,7 @@ public class RSEMWorkflow extends SemanticWorkflow {
         cvTerms.put(EDAM, new HashSet<String>(Arrays.asList("BAM", "BAI","Text","Alignment format",
                                                             "Sequence alignment","Gene expression")));
     }
+    
         
     /**
      * Function that returns CV terms put into a Map container
@@ -78,6 +80,11 @@ public class RSEMWorkflow extends SemanticWorkflow {
              	+ getProperty("library") + "_" + getProperty("sequencer_run_name") + "_" + getProperty("barcode") 
              	+ "_L00" + getProperty("lane");
             }
+            
+            if (hasPropertyAndNotNull("provision_rsem_bam_file")) {
+                String provBam = getProperty("provision_rsem_bam_file").toString();
+                this.provisionBamFile = provBam.isEmpty() || provBam.equalsIgnoreCase("false") ? false : true;
+            }
 
 
         } catch (Exception e) {
@@ -86,7 +93,6 @@ public class RSEMWorkflow extends SemanticWorkflow {
         }
 
        
-        outputTranscripts = createOutputFile(this.dataDir + outputFileName + "." + RSEM_TRANSCRIPTS, BAM, manualOutput);
         outputGenes       = createOutputFile(this.dataDir + outputFileName + "." + RSEM_GENES, TXT, manualOutput);
         outputIsoforms    = createOutputFile(this.dataDir + outputFileName + "." + RSEM_ISO, TXT, manualOutput);
 
@@ -139,13 +145,18 @@ public class RSEMWorkflow extends SemanticWorkflow {
         job02.setMaxMemory(getProperty("rsem_mem_mb"));
         job02.setQueue(queue);
         
-        this.attachCVterms(outputTranscripts, EDAM, "BAM,Sequence alignment,Alignment format");
+        
         this.attachCVterms(outputGenes, EDAM, "Text,Gene expression");
         this.attachCVterms(outputIsoforms, EDAM, "Text,Gene expression");
-        
-	job02.addFile(outputTranscripts);
+        	
         job02.addFile(outputGenes);
         job02.addFile(outputIsoforms);
+        
+        if (this.provisionBamFile) {
+            outputTranscripts = createOutputFile(this.dataDir + outputFileName + "." + RSEM_TRANSCRIPTS, BAM, manualOutput);
+            this.attachCVterms(outputTranscripts, EDAM, "BAM,Sequence alignment,Alignment format");
+            job02.addFile(outputTranscripts);
+        }
         
     }
        
