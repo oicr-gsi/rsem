@@ -20,12 +20,13 @@ public class RSEMDecider extends OicrDecider {
     private String bamutilMemory = "8000";
     private String rsemMemory    = "10000";
     private String rsemStrandedness = "none"; // For all TrueSeq stranded - derived protocols should be set to reverse
+    private String provisionRsemBamFile = "true";
     
     private final static String DEFAULT_THREADS = "6";
     private final static String BAM_METATYPE = "application/bam";
     private final static String TRANSCRIPTOME_SUFFIX = "Aligned.toTranscriptome.out";
     private final static String DEFAULT_INDEXDIR = "/.mounts/labs/PDE/data/reference/hg19_random/RSEM/RSEM";
-
+    
     public RSEMDecider() {
         super();
         fileSwaToSmall = new HashMap<String, BeSmall>();
@@ -40,6 +41,7 @@ public class RSEMDecider extends OicrDecider {
         parser.accepts("ngsutils-pythonpath", "Optional: ngsutils needs correct PYTHONPATH set, normally user shouldn't change this.").withRequiredArg();
         parser.accepts("additionalRsemParams", "Optional: RSEM additional parameters").withRequiredArg();
         parser.accepts("template-type", "Optional: limit the run to only specified template type").withRequiredArg();
+        parser.accepts("provision-rsem-bam-file", "Optional: Set the flag (true or false) to indicate if we want RSEM .bam file. Default: true").withRequiredArg();
 
     }
 
@@ -81,6 +83,14 @@ public class RSEMDecider extends OicrDecider {
         
         if (this.options.has("additional-rsem-params")) {
             this.additionalRsemParams = options.valueOf("additional-rsem-params").toString();
+        }
+        
+         if (this.options.has("provision-rsem-bam-file")) {
+            Log.debug("Setting provisioning RSEM bam file, default is true and needs to be set only in special cases");
+            String tempProv = options.valueOf("provision-rsem-bam-file").toString();
+            if (tempProv.equalsIgnoreCase("false") || tempProv.equalsIgnoreCase("true")) {
+                this.provisionRsemBamFile = tempProv.toLowerCase();
+            }
         }
 
         ReturnValue val = super.init();
@@ -241,6 +251,7 @@ public class RSEMDecider extends OicrDecider {
         iniFileMap.put("lane", currentBs.getLane());
         iniFileMap.put("barcode", currentBs.getBarcode());
         iniFileMap.put("library", currentBs.getRGLB());
+        iniFileMap.put("provision_rsem_bam_file", this.provisionRsemBamFile);
 
         //PYTHONPATH is configured in the dafault ini and should not be normally changed
         if (!this.ngsutilsPythonPath.isEmpty()) {
