@@ -3,13 +3,11 @@ version 1.0
 workflow rsem {
 input {
   File inputBam
-  String outputFileNamePrefix
+  String outputFileNamePrefix = basename(inputBam, ".bam")
 }
 
-String sampleID = if outputFileNamePrefix=="" then basename(inputBam, ".bam") else outputFileNamePrefix
-
 # run RSEM
-call runRsem { input: inputFile = inputBam, sampleID = sampleID }
+call runRsem { input: inputFile = inputBam, sampleID = outputFileNamePrefix }
 
 parameter_meta {
   inputBam: "Input BAM file with aligned RNAseq reads."
