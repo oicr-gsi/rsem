@@ -25,9 +25,14 @@ java -jar cromwell.jar run rsem.wdl --inputs inputs.json
 Parameter|Value|Description
 ---|---|---
 `inputBam`|File|Input BAM file with aligned RNAseq reads.
-`outputFileNamePrefix`|String|Output prefix, customizable. Default is the input file's basename.
 `runRsem.rsemIndexDir`|String|Base of RSEM indexes, includes the directory common file prefix
 `runRsem.modules`|String|Names and versions of modules
+
+
+#### Optional workflow parameters:
+Parameter|Value|Default|Description
+---|---|---|---
+`outputFileNamePrefix`|String|basename(inputBam,".bam")|Output prefix, customizable. Default is the input file's basename.
 
 
 #### Optional task parameters:
