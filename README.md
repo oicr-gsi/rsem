@@ -86,9 +86,9 @@ This section lists command(s) run by rsem workflow
 rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT pints to rsem's installation directory and defined
 by the module which user choose to use (this is specific to OICR environment). 
  
- INPUT_FILE     is a placeholder for an input file.
- RSEM_INDEX_DIR is a placeholder for a direcory with RSEM reference files
- SAMPLE_ID      is a placeholder for a sample id
+ * INPUT_FILE     is a placeholder for an input file.
+ * RSEM_INDEX_DIR is a placeholder for a direcory with RSEM reference files
+ * SAMPLE_ID      is a placeholder for a sample id
 
 ```
 $RSEM_ROOT/bin/rsem-calculate-expression --bam --paired-end INPUT_FILE RSEM_INDEX_DIR SAMPLE_ID
