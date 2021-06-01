@@ -1,3 +1,6 @@
+## 2.0 - 2021-05-31
+- migration to vidarr 
+[GP-2734](https://jira.oicr.on.ca/browse/GP-2734)
 ## 2.0 - 2020-06-01
 - Conversion to wdl, removing ngsutils as this dependency is no longer maintained
 ## 1.1 - 2017-06-28
