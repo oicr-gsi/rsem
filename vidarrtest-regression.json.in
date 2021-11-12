@@ -20,7 +20,10 @@
             "rsem.runRsem.timeout": null
         },
         "description": "RSEM workflow test",
-        "engineArguments": {},
+        "engineArguments": {
+           "write_to_cache": false,
+           "read_from_cache": false
+        },
         "id": "TEST_TGL",
         "metadata": {
             "rsem.geneResults": {
@@ -50,8 +53,8 @@
         },
         "validators": [
             {
-                "metrics_calculate": "@CHECKOUT@/./calculate.sh",
-                "metrics_compare": "@CHECKOUT@/./compare.sh",
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
                 "output_metrics": "/.mounts/labs/gsi/testdata/rsem/output_metrics/TEST_TGL.metrics",
                 "type": "script"
             }
