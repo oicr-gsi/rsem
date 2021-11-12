@@ -6,8 +6,7 @@ cd $1
 echo ".results files:"
 find . -name '*.results' | xargs md5sum | sort -V
 
-# For bam file we do the md5sum since it's
-module load samtools/1.9 1>/dev/null
+# For bam file we do the md5sum 
 
 echo "transcriptome .bam file:"
 find . -name *.bam | xargs md5sum
