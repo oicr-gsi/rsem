@@ -51,39 +51,13 @@ Output | Type | Description
 `transcriptBam`|File|BAM file with additional ZW:f:value, a single precision floating number representing the posterior probability
 
 
-## Niassa + Cromwell
-
-This WDL workflow is wrapped in a Niassa workflow (https://github.com/oicr-gsi/pipedev/tree/master/pipedev-niassa-cromwell-workflow) so that it can used with the Niassa metadata tracking system (https://github.com/oicr-gsi/niassa).
-
-* Building
-```
-mvn clean install
-
-```
-
-* Testing
-```
-mvn clean verify \
--Djava_opts="-Xmx1g -XX:+UseG1GC -XX:+UseStringDeduplication" \
--DrunTestThreads=2 \
--DskipITs=false \
--DskipRunITs=false \
--DworkingDirectory=/path/to/tmp/ \
--DschedulingHost=niassa_oozie_host \
--DwebserviceUrl=http://niassa-url:8080 \
--DwebserviceUser=niassa_user \
--DwebservicePassword=niassa_user_password \
--Dcromwell-host=http://cromwell-url:8000
-
-```
-
 ## Commands
 
 This section lists command(s) run by rsem workflow
 
 * Running rsem
 
-rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT pints to rsem's installation directory and defined
+rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT points to rsem's installation directory and defined
 by the module which a user chooses to use (this is specific to OICR environment). 
  
  * INPUT_FILE     is a placeholder for an input file.
