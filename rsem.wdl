@@ -1,17 +1,36 @@
 version 1.0
 
+struct GenomeResources {
+    String reference_modules
+    String reference_indexdir
+}
+
+
 workflow rsem {
 input {
   File inputBam
-  String outputFileNamePrefix = basename(inputBam, ".bam")
+  String outputFileNamePrefix
+  String reference
+}
+
+Map[String, GenomeResources] resources = {
+  "hg19": {
+    "reference_modules": "rsem/1.3.3 hg19-rsem-index/1.3.3",
+    "reference_indexdir": "$HG19_RSEM_INDEX_ROOT/hg19_random_rsem"
+  },
+  "hg38": {
+    "reference_modules": "rsem/1.3.3 hg38-rsem-index/1.3.0",
+    "reference_indexdir": "$HG38_RSEM_INDEX_ROOT/hg38_random_rsem"
+  }
 }
 
 # run RSEM
-call runRsem { input: inputFile = inputBam, sampleID = outputFileNamePrefix }
+call runRsem { input: inputFile = inputBam, sampleID = outputFileNamePrefix, modules = resources[reference].reference_modules, rsemIndexDir = resources[reference].reference_indexdir }
 
 parameter_meta {
   inputBam: "Input BAM file with aligned RNAseq reads."
   outputFileNamePrefix: "Output prefix, customizable. Default is the input file's basename."
+  reference: "Name and version of reference genome"
 }
 
 meta {
