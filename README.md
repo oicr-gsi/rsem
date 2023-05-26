@@ -4,6 +4,9 @@ RSEM is a software package for estimating gene and isoform expression levels fro
 
 ![rsem flowchart](docs/RSEM_specs.png)
 
+# rsem
+
+RSEM 2.0, workflow for accurate quantification of gene and isoform expression from RNA-Seq data
 
 ## Overview
 
@@ -11,12 +14,12 @@ RSEM is a software package for estimating gene and isoform expression levels fro
 
 * [rsem 1.3.3](https://github.com/deweylab/RSEM)
 
+
 ## Usage
 
 ### Cromwell
 ```
 java -jar cromwell.jar run rsem.wdl --inputs inputs.json
-
 ```
 
 ### Inputs
@@ -25,14 +28,13 @@ java -jar cromwell.jar run rsem.wdl --inputs inputs.json
 Parameter|Value|Description
 ---|---|---
 `inputBam`|File|Input BAM file with aligned RNAseq reads.
-`runRsem.rsemIndexDir`|String|Base of RSEM indexes, includes the directory common file prefix
-`runRsem.modules`|String|Names and versions of modules
+`outputFileNamePrefix`|String|Output prefix, customizable. Default is the input file's basename.
+`reference`|String|Name and version of reference genome
 
 
 #### Optional workflow parameters:
 Parameter|Value|Default|Description
 ---|---|---|---
-`outputFileNamePrefix`|String|basename(inputBam,".bam")|Output prefix, customizable. Default is the input file's basename.
 
 
 #### Optional task parameters:
@@ -52,27 +54,25 @@ Output | Type | Description
 
 
 ## Commands
-
-This section lists command(s) run by rsem workflow
-
-* Running rsem
-
-rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT points to rsem's installation directory and defined
-by the module which a user chooses to use (this is specific to OICR environment). 
  
- * INPUT_FILE     is a placeholder for an input file.
- * RSEM_INDEX_DIR is a placeholder for a direcory with RSEM reference files
- * SAMPLE_ID      is a placeholder for a sample id
-
-```
-$RSEM_ROOT/bin/rsem-calculate-expression --bam --paired-end INPUT_FILE RSEM_INDEX_DIR SAMPLE_ID
-
-```
-
-
-## Support
+ This section lists command(s) run by rsem workflow
+ 
+ * Running rsem
+ 
+ rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT pints to rsem's installation directory and defined
+ by the module which a user chooses to use (this is specific to OICR environment). 
+  
+  * INPUT_FILE     is a placeholder for an input file.
+  * RSEM_INDEX_DIR is a placeholder for a direcory with RSEM reference files
+  * SAMPLE_ID      is a placeholder for a sample id
+ 
+ ```
+ $RSEM_ROOT/bin/rsem-calculate-expression --bam --paired-end INPUT_FILE RSEM_INDEX_DIR SAMPLE_ID
+ 
+ ```
+ 
+ ## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
 _Generated with generate-markdown-readme (https://github.com/oicr-gsi/gsi-wdl-tools/)_
-
