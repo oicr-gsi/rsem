@@ -44,10 +44,19 @@ meta {
       }
     ]
     output_meta: {
-      geneResults: "expression levels for all genes recorded in the reference",
-      isoformResults: "expression levels for all isoforms recorded in the reference",
-      transcriptBam: "BAM file with additional ZW:f:value, a single precision floating number representing the posterior probability"
+    geneResults: {
+        description: "expression levels for all genes recorded in the reference",
+        vidarr_label: "geneResults"
+    },
+    isoformResults: {
+        description: "expression levels for all isoforms recorded in the reference",
+        vidarr_label: "isoformResults"
+    },
+    transcriptBam: {
+        description: "BAM file with additional ZW:f:value, a single precision floating number representing the posterior probability",
+        vidarr_label: "transcriptBam"
     }
+}
 }
 
 output {

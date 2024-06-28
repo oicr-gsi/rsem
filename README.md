@@ -46,32 +46,32 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`geneResults`|File|expression levels for all genes recorded in the reference
-`isoformResults`|File|expression levels for all isoforms recorded in the reference
-`transcriptBam`|File|BAM file with additional ZW:f:value, a single precision floating number representing the posterior probability
+Output | Type | Description | Labels
+---|---|---|---
+`geneResults`|File|expression levels for all genes recorded in the reference|vidarr_label: geneResults
+`isoformResults`|File|expression levels for all isoforms recorded in the reference|vidarr_label: isoformResults
+`transcriptBam`|File|BAM file with additional ZW:f:value, a single precision floating number representing the posterior probability|vidarr_label: transcriptBam
 
 
 ## Commands
  
- This section lists command(s) run by rsem workflow
+This section lists command(s) run by rsem workflow
  
- * Running rsem
+* Running rsem
  
- rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT pints to rsem's installation directory and defined
- by the module which a user chooses to use (this is specific to OICR environment). 
+rsem workflow runs the following command (excerpt from .wdl file). $RSEM_ROOT pints to rsem's installation directory and defined
+by the module which a user chooses to use (this is specific to OICR environment). 
   
   * INPUT_FILE     is a placeholder for an input file.
   * RSEM_INDEX_DIR is a placeholder for a direcory with RSEM reference files
   * SAMPLE_ID      is a placeholder for a sample id
  
- ```
+```
  $RSEM_ROOT/bin/rsem-calculate-expression --bam --paired-end INPUT_FILE RSEM_INDEX_DIR SAMPLE_ID
  
- ```
+```
  
- ## Support
+## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
