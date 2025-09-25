@@ -3,7 +3,7 @@
         "arguments": {
             "rsem.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/rsem/test_inputs/OCT.Aligned.toTranscriptome.out_subsampled.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/rsem/test_inputs/test_1.Aligned.toTranscriptome.out.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -13,7 +13,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "rsem.outputFileNamePrefix": "OCT_Test",
+            "rsem.outputFileNamePrefix": "test_1",
             "rsem.reference": "hg38",
             "rsem.runRsem.jobMemory": null,
             "rsem.runRsem.timeout": null
