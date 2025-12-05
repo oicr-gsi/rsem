@@ -21,6 +21,14 @@ Map[String, GenomeResources] resources = {
   "hg38": {
     "reference_modules": "rsem/1.3.3 hg38-rsem-index/1.3.0-gencode44",
     "reference_indexdir": "$HG38_RSEM_INDEX_ROOT/hg38_random_rsem"
+  },
+  "hg38_noAlt": {
+    "reference_modules": "rsem/1.3.3 hg38-noalt-rsem-index/1.3.0-gencode44",
+    "reference_indexdir": "$HG38_NOALT_RSEM_INDEX_ROOT/hg38_noAlt_rsem"
+  },
+  "grch38": {
+    "reference_modules": "rsem/1.3.3 grch38-rsem-index/1.3.0-gencode44",
+    "reference_indexdir": "$GRCH38_RSEM_INDEX_ROOT/GCA_000001405.15_GRCh38_rsem"
   }
 }
 
