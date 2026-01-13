@@ -12,8 +12,8 @@ input {
   File inputBam
   String outputFileNamePrefix
   String reference
-  String local_code_modulefile_path = "/home/ubuntu/local_modules/gsi/modulator/modulefiles/Ubuntu24.04"
-  String local_data_modulefile_path = "/home/ubuntu/local_modules/gsi/modulator/modulefiles/data"
+  String local_code_modulefile_path = "/home/gpeng_oicr_on_ca/local_modules/gsi/modulator/modulefiles/Ubuntu24.04"
+  String local_data_modulefile_path = "/home/gpeng_oicr_on_ca/local_modules/gsi/modulator/modulefiles/data"
 }
 
 Map[String, GenomeResources] resources = {
@@ -107,6 +107,7 @@ command <<<
   module use ~{local_data_modulefile_path }
   module load ~{data_modules}
  $RSEM_ROOT/bin/rsem-calculate-expression --bam --paired-end ~{inputFile} ~{rsemIndexDir} ~{sampleID}
+
 >>>
 
 runtime {
@@ -121,4 +122,3 @@ output {
   File transcriptBam = "~{sampleID}.transcript.bam"
 }
 }
-
