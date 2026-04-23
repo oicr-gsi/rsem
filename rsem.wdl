@@ -11,26 +11,54 @@ input {
   File inputBam
   String outputFileNamePrefix
   String reference
+  String gencode
 }
 
-Map[String, GenomeResources] resources = {
+Map[String, Map[String, GenomeResources]] resources = {
   "hg19": {
-    "reference_modules": "rsem/1.3.3 hg19-rsem-index/1.3.3",
-    "reference_indexdir": "$HG19_RSEM_INDEX_ROOT/hg19_random_rsem"
+    "31": { 
+      "reference_modules": "rsem/1.3.3 hg19-rsem-index/1.3.3",
+      "reference_indexdir": "$HG19_RSEM_INDEX_ROOT/hg19_random_rsem"
+    }
   },
   "hg38": {
-    "reference_modules": "rsem/1.3.3 hg38-rsem-index/1.3.0-gencode44",
-    "reference_indexdir": "$HG38_RSEM_INDEX_ROOT/hg38_random_rsem"
+    "31": {
+      "reference_modules": "rsem/1.3.3 hg38-rsem-index/1.3.0",
+      "reference_indexdir": "$HG38_RSEM_INDEX_ROOT/hg38_random_rsem"
+    },
+    "44": {
+      "reference_modules": "rsem/1.3.3 hg38-rsem-index/1.3.0-gencode44",
+      "reference_indexdir": "$HG38_RSEM_INDEX_ROOT/hg38_random_rsem"
+    }
+  },
+  "hg38_noAlt": {
+    "44": {
+      "reference_modules": "rsem/1.3.3 hg38-noalt-rsem-index/1.3.0-gencode44",
+      "reference_indexdir": "$HG38_RSEM_NOALT_INDEX_ROOT/hg38_noAlt_rsem"
+    }
+  },
+  "grch38": {
+    "44": {
+      "reference_modules": "rsem/1.3.3 grch38-rsem-index/1.3.0-gencode44",
+      "reference_indexdir": "$GRCH38_RSEM_INDEX_ROOT/GCA_000001405.15_GRCh38_rsem"
+    }
   }
 }
 
 # run RSEM
-call runRsem { input: inputFile = inputBam, sampleID = outputFileNamePrefix, modules = resources[reference].reference_modules, rsemIndexDir = resources[reference].reference_indexdir }
+call runRsem { 
+  input: 
+    inputFile = inputBam,
+    sampleID = outputFileNamePrefix,
+    modules = resources[reference][gencode].reference_modules,
+    rsemIndexDir = resources[reference][gencode].reference_indexdir
+}
 
 parameter_meta {
   inputBam: "Input BAM file with aligned RNAseq reads."
   outputFileNamePrefix: "Output prefix, customizable. Default is the input file's basename."
   reference: "Name and version of reference genome"
+  gencode: "Version of gencode used to generate the RSEM indexes"
 }
 
 meta {

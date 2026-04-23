@@ -30,6 +30,7 @@ Parameter|Value|Description
 `inputBam`|File|Input BAM file with aligned RNAseq reads.
 `outputFileNamePrefix`|String|Output prefix, customizable. Default is the input file's basename.
 `reference`|String|Name and version of reference genome
+`gencode`|String|Version of gencode used to generate the RSEM indexes
 
 
 #### Optional workflow parameters:

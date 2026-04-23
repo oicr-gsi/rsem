@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2026-04-25
+### Added
+- additional genomic resources, hg38_noAlt and grch38
+### Changed
+- nested structure of genomic resources, additional layer to handle different gencode versions
+
 ## [1.1.1] - 2025-09-25
 ### Changed
 - [GRD-964](https://jira.oicr.on.ca/browse/GRD-964)
