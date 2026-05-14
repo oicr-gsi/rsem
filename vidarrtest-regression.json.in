@@ -15,6 +15,7 @@
             },
             "rsem.outputFileNamePrefix": "test_1",
             "rsem.reference": "hg38",
+            "rsem.gencode": "44",
             "rsem.runRsem.jobMemory": null,
             "rsem.runRsem.timeout": null
         },
