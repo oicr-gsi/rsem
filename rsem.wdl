@@ -34,7 +34,7 @@ Map[String, Map[String, GenomeResources]] resources = {
   "hg38_noAlt": {
     "44": {
       "reference_modules": "rsem/1.3.3 hg38-noalt-rsem-index/1.3.0-gencode44",
-      "reference_indexdir": "$HG38_RSEM_NOALT_INDEX_ROOT/hg38_noAlt_rsem"
+      "reference_indexdir": "$HG38_NOALT_RSEM_INDEX_ROOT/hg38_noAlt_rsem"
     }
   },
   "grch38": {
